@@ -15,7 +15,7 @@
   - [x] Strikethrough list elements on click
   - [ ] Styling to sidebar 
         
-
+<br />
 
 ## Submitting games
 
