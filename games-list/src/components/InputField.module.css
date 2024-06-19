@@ -1,6 +1,7 @@
 .input {
   position: relative;
-  top: 40%;
+  top: 35%;
+  left: 5%;
   border: none;
   background-color: rgb(103, 101, 101);
 }
@@ -25,8 +26,8 @@
 
 .button {
   position: relative;
-  top: 39%;
-  left: 5px;
+  top: 34%;
+  left: 10px;
   border: none;
   background-color: black;
   color: #c98b0f;
