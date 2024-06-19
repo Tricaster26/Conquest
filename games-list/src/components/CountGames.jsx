@@ -1,7 +1,10 @@
 import styles from "./CountGames.module.css";
 
+/*Used to count games completed and uncompleted*/
+
 export default function CountGames({ gamesList }) {
   function toCompleted() {
+    // checks for numeber of games entered that were completed
     return gamesList.filter((element) => !element.complete).length;
   }
   function complete() {

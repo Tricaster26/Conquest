@@ -1,6 +1,7 @@
 import InputField from "./InputField";
 import AllGames from "./AllGames";
-import styles from "./GamesCompleted.module.css";
+
+/*Holds code for input field and all games added by a user placed in gamesList*/
 
 export default function GamesCompleted({
   input,
@@ -9,7 +10,7 @@ export default function GamesCompleted({
   setList,
 }) {
   return (
-    <div className={styles.container}>
+    <div>
       <InputField
         input={input}
         setInput={setInput}
