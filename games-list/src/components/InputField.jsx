@@ -1,5 +1,4 @@
 import styles from "./InputField.module.css";
-
 /* Holds form allowing user to input their games and submit */
 
 export default function InputField({ input, setInput, setList, gamesList }) {
