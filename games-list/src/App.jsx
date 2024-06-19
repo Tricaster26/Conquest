@@ -22,7 +22,7 @@ function App() {
         setList={setList}
       />
       <CountGames gamesList={gamesList} />
-      <SideBar />
+      {/*<SideBar />*/}
     </div>
   );
 }
