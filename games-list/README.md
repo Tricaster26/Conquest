@@ -7,9 +7,9 @@
 - [ ] Implement SideBar
 - [X] Setup RAWG account to use their gaming data
 - [x] Completed games are replaced to the bottom of the screen
-- [ ] Use RAWG API to get review scores to show in details
-- [ ] Background changes on name of game   
+- [ ] Use RAWG API to get review scores to show in details 
 - [ ] Add CSS styling
+  - [ ] Background changes on name of game  	
   - [x] Add Styling to header and background
   - [x] Styling to list elements 
   - [x] Strikethrough list elements on click
