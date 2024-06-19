@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  margin-top: 40px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: -1;
+}
+
+.toCompleted {
+  font-size: 15pt;
+  font-style: bold;
+  padding: 20px;
+  position: relative;
+  text-align: left;
+  background-color: #c98b0f;
+  border: 3px solid rgb(131, 194, 5);
+}
+
+.completed {
+  position: fixed;
+  padding: 20px;
+  text-align: center;
+  font-size: 15pt;
+  font-style: bold;
+  right: 0;
+  background-color: #c98b0f;
+  border: 3px solid rgb(131, 194, 5);
+}

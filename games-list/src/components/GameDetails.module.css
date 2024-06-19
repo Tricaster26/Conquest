@@ -1,0 +1,39 @@
+.details {
+  position: relative;
+  left: 25%;
+  border: 2px solid rgb(172, 194, 5);
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  background-size: cover;
+  transition: all 2s ease-in-out;
+  color: #c98b0f;
+  border-top: none;
+}
+
+.transition {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  background-size: contain;
+  background-color: black;
+  transition: background-color 0.5s ease-in;
+  color: #c98b0f;
+}
+.transition:hover {
+  background-color: transparent;
+}
+
+.date {
+  position: relative;
+  left: 20%;
+}
+
+.meta {
+  position: relative;
+  left: 10px;
+  float: left;
+}

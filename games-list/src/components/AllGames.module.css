@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+  text-align: center;
+  top: 70px;
+  border-radius: 40px;
+}
+.invisible {
+  position: relative;
+  color: blue;
+  opacity: 0;
+}
