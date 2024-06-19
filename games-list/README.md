@@ -18,5 +18,5 @@
 
 
 
-https://github.com/Tricaster26/Conquest/assets/71603339/be731527-5377-4f47-9c18-765dd652106c
 
+![Submit game](https://github.com/Tricaster26/Conquest/assets/71603339/71df3a37-5a38-4601-9258-68703f7cbf3b)
