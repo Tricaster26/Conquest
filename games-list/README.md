@@ -17,6 +17,18 @@
         
 
 
+## Submitting games
 
 
-![Submit game](https://github.com/Tricaster26/Conquest/assets/71603339/71df3a37-5a38-4601-9258-68703f7cbf3b)
+https://github.com/Tricaster26/Conquest/assets/71603339/facd9d72-8a5a-4e36-b7d6-ec6c0dd1da6f
+
+
+## Extra Details and Sorting completed games
+
+
+https://github.com/Tricaster26/Conquest/assets/71603339/220e22e5-919c-483f-b2b1-f9a91e9e1930
+
+
+
+
+
