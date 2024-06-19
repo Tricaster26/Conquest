@@ -13,5 +13,6 @@
   - [x] Styling to list elements 
   - [x] Strikethrough list elements on click
   - [ ] Styling to sidebar 
+- [ ] Convert css modules to tailwind
         
 
