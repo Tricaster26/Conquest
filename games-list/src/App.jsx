@@ -1,9 +1,9 @@
 import Header from "./components/Header";
-import GamesCompleted from "./components/GamesCompleted";
+
 import "./App.module.css";
 import { useState } from "react";
 import CountGames from "./components/CountGames";
-import SideBar from "./components/SideBar";
+import GamesCompleted from "./components/GamesCompleted";
 
 function App() {
   const [input, setInput] = useState({
