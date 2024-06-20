@@ -1,9 +1,14 @@
-import Header from "./components/Header";
-
-import "./App.module.css";
 import { useState } from "react";
-import CountGames from "./components/CountGames";
-import GamesCompleted from "./components/GamesCompleted";
+import Header from "../components/Header";
+import GamesCompleted from "../components/GamesCompleted";
+import CountGames from "../components/CountGames";
+
+interface listObject {
+  game: string;
+  complete: boolean;
+  details: boolean;
+  // Add more properties as needed
+}
 
 function App() {
   const [input, setInput] = useState({
@@ -11,10 +16,11 @@ function App() {
     complete: false,
     details: false,
   });
-  const [gamesList, setList] = useState([]);
+  const [gamesList, setList] = useState<listObject[]>([]);
   return (
     <div className="App">
       <Header />
+
       <GamesCompleted
         input={input}
         setInput={setInput}

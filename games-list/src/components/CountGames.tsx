@@ -1,8 +1,12 @@
 import styles from "./CountGames.module.css";
 
+interface GameFieldProps {
+  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
+}
+
 /*Used to count games completed and uncompleted*/
 
-export default function CountGames({ gamesList }) {
+export default function CountGames({ gamesList }: GameFieldProps) {
   function toCompleted() {
     // checks for numeber of games entered that were completed
     return gamesList.filter((element) => !element.complete).length;

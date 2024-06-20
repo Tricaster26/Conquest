@@ -1,7 +1,12 @@
 import styles from "./GameDetails.module.css";
 
+interface GameDetailsProps {
+  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
+  element: { game: string; complete: boolean; details: boolean };
+}
+
 /*Displays game details below title if dropdown button was clicked, goes back if clicked again*/
-export default function GameDetails({ gamesList, element }) {
+export default function GameDetails({ gamesList, element }: GameDetailsProps) {
   return element.details ? (
     <div
       className={styles.details}

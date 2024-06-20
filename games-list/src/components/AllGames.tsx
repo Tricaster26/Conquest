@@ -1,10 +1,18 @@
 import OneGame from "./OneGame";
 import styles from "./AllGames.module.css";
 import GameDetails from "./GameDetails";
+import { Dispatch, SetStateAction } from "react";
+
+interface AllGamesProps {
+  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
+  setList: Dispatch<
+    SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
+  >;
+}
 
 /* Displays list of all games enter by the user, excluding those delated later on by the x button */
 
-export default function AllGames({ gamesList, setList }) {
+export default function AllGames({ gamesList, setList }: AllGamesProps) {
   let x = 0;
   const sortedList = gamesList
     .slice()

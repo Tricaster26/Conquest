@@ -1,18 +1,35 @@
 import styles from "./OneGame.module.css";
-
+import { Dispatch, SetStateAction } from "react";
 /*Display for each game title , excluding the details*/
 
-export default function OneGame({ element, gamesList, setList }) {
-  let getName = (element) => (element ? styles.striked : styles.unstriked); // variable to changle css style used on text when clicked
+interface OneGameProps {
+  element: { game: string; complete: boolean; details: boolean };
+  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
+  setList: Dispatch<
+    SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
+  >;
+}
+
+export default function OneGame({ element, gamesList, setList }: OneGameProps) {
+  let getName = (complete: boolean) =>
+    complete ? styles.striked : styles.unstriked; // variable to changle css style used on text when clicked
   let query = `search=${element}`;
   let gamePic =
     "https://media.rawg.io/media/games/1c3/1c305096502c475c00276c827f0fd697.jpg";
 
-  function handleClick(element) {
+  function handleClick(element: {
+    game: string;
+    complete: boolean;
+    details: boolean;
+  }) {
     //removes element from list of games
     setList(gamesList.filter((list) => list !== element));
   }
-  function completeCheck(element) {
+  function completeCheck(element: {
+    game: string;
+    complete: boolean;
+    details: boolean;
+  }) {
     //changes complete status of element object to true when x button is clicked
     setList(
       gamesList.map((game) =>
@@ -20,7 +37,11 @@ export default function OneGame({ element, gamesList, setList }) {
       )
     );
   }
-  function revealDetails(element) {
+  function revealDetails(element: {
+    game: string;
+    complete: boolean;
+    details: boolean;
+  }) {
     //changes details status of element to false when v button is clicked
     setList(
       gamesList.map((game) =>
