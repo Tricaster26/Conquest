@@ -24,6 +24,7 @@ export default function CloseModal({
   modal,
   setList,
 }: gameName) {
+  // function removes pop up promp as well as component clicked on
   function handleClick(gameObject: {
     game: string;
     complete: boolean;
@@ -57,6 +58,7 @@ export default function CloseModal({
           </button>
           <button
             className={styles.cancel}
+            // close modal if "Cancel" is selected
             onClick={() => setModal({ ...modal, open: false })}
           >
             Cancel
