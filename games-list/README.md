@@ -7,12 +7,14 @@
 - [ ] Implement SideBar
 - [x] <strike>Setup RAWG account to use their gaming data</strike>
 - [x] <strike>Completed games are replaced to the bottom of the screen</strike>
+- [x] <strike>Present modal on removing a game</strike>
 - [ ] Use RAWG API to get review scores to show in details
 - [ ] Add CSS styling
   - [ ] Background changes on name of game
   - [x] <strike>Add Styling to header and background</strike>
   - [x] <strike>Styling to list elements</strike>
   - [x] <strike>Strikethrough list elements on click</strike>
+  - [x] <strike> Add visual pop up style to removing button modal</strike>
   - [ ] Styling to sidebar
 
 <br />
