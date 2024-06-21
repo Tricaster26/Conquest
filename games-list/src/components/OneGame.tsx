@@ -9,6 +9,11 @@ interface OneGameProps {
     SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
   >;
 }
+interface oneGameElement {
+  game: string;
+  complete: boolean;
+  details: boolean;
+}
 
 export default function OneGame({ element, gamesList, setList }: OneGameProps) {
   let getName = (complete: boolean) =>
@@ -25,11 +30,7 @@ export default function OneGame({ element, gamesList, setList }: OneGameProps) {
     //removes element from list of games
     setList(gamesList.filter((list) => list !== element));
   }
-  function completeCheck(element: {
-    game: string;
-    complete: boolean;
-    details: boolean;
-  }) {
+  function completeCheck(element: oneGameElement) {
     //changes complete status of element object to true when x button is clicked
     setList(
       gamesList.map((game) =>
@@ -37,11 +38,7 @@ export default function OneGame({ element, gamesList, setList }: OneGameProps) {
       )
     );
   }
-  function revealDetails(element: {
-    game: string;
-    complete: boolean;
-    details: boolean;
-  }) {
+  function revealDetails(element: oneGameElement) {
     //changes details status of element to false when v button is clicked
     setList(
       gamesList.map((game) =>
