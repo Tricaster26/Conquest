@@ -1,0 +1,69 @@
+.outer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  text-align: center;
+}
+.inner {
+  position: sticky;
+  width: 50%;
+  background-color: #dda22c;
+  margin: auto;
+  top: 20%;
+  padding: 5% 0;
+  border: solid;
+  border-color: white;
+  border-style: groove;
+  border-radius: 10px;
+  border-width: 10px;
+}
+.message {
+  position: relative;
+  font-size: larger;
+  color: black;
+  top: -10px;
+  text-align: center;
+}
+.buttons {
+  position: relative;
+  top: 20px;
+}
+.confirm {
+  position: relative;
+  right: 10%;
+  border: none;
+  background-color: rgba(61, 155, 32, 1);
+  width: 100px;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 10px;
+  transition: border 200ms linear;
+  cursor: pointer;
+}
+.confirm:hover {
+  border: 1px solid white;
+}
+.cancel {
+  position: relative;
+  left: 10%;
+  border: none;
+  font-size: medium;
+  background-color: rgba(61, 155, 32, 1);
+  width: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: border 200ms linear;
+  cursor: pointer;
+}
+.cancel:hover {
+  border: 1px solid white;
+}
+
+.title {
+  position: relative;
+  bottom: 20px;
+  font: bolder;
+}

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import styles from "./CloseModal.module.css";
 
 interface gameName {
   modal: {
@@ -32,26 +33,27 @@ export default function CloseModal({
     setModal({ ...modal, open: false });
   }
   return (
-    <div className="outer">
-      <div className="inner">
-        <div className="title">
+    <div className={styles.outer}>
+      <div className={styles.inner}>
+        <div className={styles.title}>
           <h1>Are you sure you want to remove this game from Conquest?</h1>
         </div>
-        <div className="message">
+        <div className={styles.message}>
           <p>
-            By clicking confirm you will be removing {modal.gameName.game} from
-            conquest. Click cancel to go back.
+            By clicking confirm you will be removing "{modal.gameName.game}"
+            from conquest.
+            <br /> Click cancel to go back.
           </p>
         </div>
-        <div className="confirm">
+        <div className={styles.buttons}>
           <button
-            className="confirm"
+            className={styles.confirm}
             onClick={() => handleClick(modal.gameName)}
           >
             Confirm
           </button>
           <button
-            className="cancel"
+            className={styles.cancel}
             onClick={() => setModal({ ...modal, open: false })}
           >
             Cancel
