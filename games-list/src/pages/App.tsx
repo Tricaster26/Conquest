@@ -20,7 +20,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       <GamesCompleted
         input={input}
         setInput={setInput}

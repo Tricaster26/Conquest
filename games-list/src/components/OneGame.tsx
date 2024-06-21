@@ -3,10 +3,16 @@ import { Dispatch, SetStateAction } from "react";
 /*Display for each game title , excluding the details*/
 
 interface OneGameProps {
-  element: { game: string; complete: boolean; details: boolean };
+  gameObject: { game: string; complete: boolean; details: boolean };
   gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
   setList: Dispatch<
     SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
+  >;
+  setModal: Dispatch<
+    SetStateAction<{
+      gameName: { game: string; complete: boolean; details: boolean };
+      open: boolean;
+    }>
   >;
 }
 interface oneGameElement {
@@ -15,20 +21,25 @@ interface oneGameElement {
   details: boolean;
 }
 
-export default function OneGame({ element, gamesList, setList }: OneGameProps) {
+export default function OneGame({
+  gameObject,
+  gamesList,
+  setList,
+  setModal,
+}: OneGameProps) {
   let getName = (complete: boolean) =>
     complete ? styles.striked : styles.unstriked; // variable to changle css style used on text when clicked
-  let query = `search=${element}`;
+  let query = `search=${gameObject}`;
   let gamePic =
     "https://media.rawg.io/media/games/1c3/1c305096502c475c00276c827f0fd697.jpg";
 
-  function handleClick(element: {
+  function handleClick(gameObject: {
     game: string;
     complete: boolean;
     details: boolean;
   }) {
     //removes element from list of games
-    setList(gamesList.filter((list) => list !== element));
+    setModal({ gameName: gameObject, open: true });
   }
   function completeCheck(element: oneGameElement) {
     //changes complete status of element object to true when x button is clicked
@@ -38,11 +49,11 @@ export default function OneGame({ element, gamesList, setList }: OneGameProps) {
       )
     );
   }
-  function revealDetails(element: oneGameElement) {
+  function revealDetails(gameObject: oneGameElement) {
     //changes details status of element to false when v button is clicked
     setList(
       gamesList.map((game) =>
-        game === element ? { ...game, details: !element.details } : game
+        game === gameObject ? { ...game, details: !gameObject.details } : game
       )
     );
   }
@@ -57,18 +68,21 @@ export default function OneGame({ element, gamesList, setList }: OneGameProps) {
     >
       <div className={styles.innerBox}>
         <span
-          onClick={() => completeCheck(element)}
-          className={getName(element.complete)} //style changes depending on complete status (strikethrough)
+          onClick={() => completeCheck(gameObject)}
+          className={getName(gameObject.complete)} //style changes depending on complete status (strikethrough)
         >
-          {element.game /* name of game to conquer */}
+          {gameObject.game /* name of game to conquer */}
         </span>
         <button
-          onClick={() => revealDetails(element)}
+          onClick={() => revealDetails(gameObject)}
           className={styles.reveal}
         >
           v
         </button>
-        <button onClick={() => handleClick(element)} className={styles.delete}>
+        <button
+          onClick={() => handleClick(gameObject)}
+          className={styles.delete}
+        >
           x
         </button>
       </div>
