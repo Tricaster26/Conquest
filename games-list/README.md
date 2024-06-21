@@ -1,6 +1,8 @@
 # Conquest (Pracitce for using React)
 
 - [x] <strike> Able to add games to list</strike>
+- [ ] Change how setState types are defined
+- [ ] Have animations for components on render
 - [x] <strike> List elements don't overlap</strike>
 - [x] <strike>Be able to delete list elements</strike>
 - [x] <strike>Count completed and available games</strike>
