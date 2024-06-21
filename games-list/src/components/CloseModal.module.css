@@ -40,11 +40,12 @@
   padding: 10px;
   font-size: medium;
   border-radius: 10px;
-  transition: border 200ms linear;
+  transition: border 200ms linear, font-weight 100ms ease-in-out;
   cursor: pointer;
 }
 .confirm:hover {
   border: 1px solid white;
+  font-weight: bold;
 }
 .cancel {
   position: relative;
@@ -55,15 +56,14 @@
   width: 100px;
   padding: 10px;
   border-radius: 10px;
-  transition: border 200ms linear;
+  transition: border 200ms ease-in-out, font-weight 100ms ease-in-out;
   cursor: pointer;
 }
 .cancel:hover {
   border: 1px solid white;
+  font-weight: bold;
 }
-
 .title {
   position: relative;
   bottom: 20px;
-  font: bolder;
 }
