@@ -36,7 +36,10 @@ export default function CloseModal({
     <div className={styles.outer}>
       <div className={styles.inner}>
         <div className={styles.title}>
-          <h1>Are you sure you want to remove this game from Conquest?</h1>
+          <h1>
+            Are you sure you want to remove "{modal.gameName.game}" from
+            Conquest?
+          </h1>
         </div>
         <div className={styles.message}>
           <p>
