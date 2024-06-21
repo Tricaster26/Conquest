@@ -26,3 +26,8 @@ https://github.com/Tricaster26/Conquest/assets/71603339/facd9d72-8a5a-4e36-b7d6-
 ## Extra Details and Sorting completed games
 
 https://github.com/Tricaster26/Conquest/assets/71603339/220e22e5-919c-483f-b2b1-f9a91e9e1930
+
+## Modal when removing game from list using "x"
+
+https://github.com/Tricaster26/Conquest/assets/71603339/9f9fdc68-575e-4631-92ba-8ff35b7659f0
+
