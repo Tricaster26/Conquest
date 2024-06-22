@@ -36,7 +36,7 @@ export default function InputField({
           placeholder="Conquer a game ..."
           className={styles.input}
         />
-        <button className={styles.button}>⚔</button>
+        <button className={styles.button}>Add ⚔</button>
       </form>
     </div>
   );

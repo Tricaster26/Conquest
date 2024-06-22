@@ -5,6 +5,7 @@
   width: 100%;
   bottom: 0;
   z-index: -1;
+  color: #ffff;
 }
 
 .toCompleted {
@@ -13,8 +14,9 @@
   padding: 20px;
   position: relative;
   text-align: left;
-  background-color: #c98b0f;
-  border: 3px solid rgb(106, 157, 3);
+  background-color: #4a4a4a;
+  border: 3px solid #ffff;
+  box-shadow: 4px -5px 5px rgb(183, 190, 197);
   border-radius: 15px;
 }
 
@@ -25,7 +27,8 @@
   font-size: 15pt;
   font-style: bold;
   right: 0;
-  background-color: #c98b0f;
-  border: 3px solid rgb(106, 157, 3);
+  background-color: #4a4a4a;
+  border: 3px solid #ffff;
+  box-shadow: -4px -5px 5px rgb(183, 190, 197);
   border-radius: 15px;
 }

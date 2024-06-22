@@ -1,7 +1,7 @@
 .details {
   position: relative;
   left: 25%;
-  border: 2px solid rgb(172, 194, 5);
+  border: 2px solid rgb(183, 190, 197);
   width: 50%;
   height: 40px;
   text-align: center;
@@ -19,9 +19,11 @@
   text-align: center;
   border-radius: 10px;
   background-size: contain;
-  background-color: black;
+  background-color: #4a4a4a;
+  box-shadow: 0px 4px 6px rgb(183, 190, 197);
   transition: background-color 0.5s ease-in;
-  color: #c98b0f;
+  font-size: medium;
+  color: white;
 }
 .transition:hover {
   background-color: transparent;
