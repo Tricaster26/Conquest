@@ -1,5 +1,3 @@
-
-https://github.com/Tricaster26/Conquest/assets/71603339/7e605099-8985-4a1d-b1fe-9128aeb3887a
 # Conquest (Pracitce for using React)
 
 - [x] <strike> Able to add games to list</strike>
