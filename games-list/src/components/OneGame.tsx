@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./OneGame.module.css";
 import { Dispatch, SetStateAction } from "react";
 /*Display for each game title , excluding the details*/
@@ -15,6 +16,7 @@ interface OneGameProps {
     }>
   >;
 }
+
 interface oneGameElement {
   game: string;
   complete: boolean;
@@ -33,7 +35,7 @@ export default function OneGame({
   let gamePic =
     "https://media.rawg.io/media/games/1c3/1c305096502c475c00276c827f0fd697.jpg";
 
-  function handleClick(gameObject: {
+  function closeObject(gameObject: {
     game: string;
     complete: boolean;
     details: boolean;
@@ -80,11 +82,19 @@ export default function OneGame({
           v
         </button>
         <button
-          onClick={() => handleClick(gameObject)}
+          onClick={() => closeObject(gameObject)}
           className={styles.delete}
         >
           x
         </button>
+        <Link
+          href={{
+            pathname: "/GameDescription",
+            query: { gameName: gameObject.game },
+          }}
+        >
+          <button className={styles.newPage}>↗</button>
+        </Link>
       </div>
     </div>
   );

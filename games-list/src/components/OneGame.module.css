@@ -53,6 +53,25 @@
   border: 1px solid #ffff;
 }
 
+.newPage {
+  position: absolute;
+  bottom: 1.5px;
+  left: 84%;
+  width: 25px;
+  top: 18%;
+  height: 25px;
+  background-color: #ffff;
+  transition: background-color 500ms linear;
+  transition: border 100ms linear;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.newPage:hover {
+  background-color: #ffff;
+  border: 1px solid #ffff;
+}
+
 .box {
   position: relative;
   left: 25%;
