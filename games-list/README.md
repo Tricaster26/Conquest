@@ -32,6 +32,9 @@ https://github.com/Tricaster26/Conquest/assets/71603339/facd9d72-8a5a-4e36-b7d6-
 
 https://github.com/Tricaster26/Conquest/assets/71603339/220e22e5-919c-483f-b2b1-f9a91e9e1930
 
-## Modal when removing game from list using "x"
+## Modal when removing game from list using "x" with updated UI
 
-https://github.com/Tricaster26/Conquest/assets/71603339/9f9fdc68-575e-4631-92ba-8ff35b7659f0
+https://github.com/Tricaster26/Conquest/assets/71603339/f6aff78c-5d06-43b9-b8d3-e9d33d3023ce
+
+
+
