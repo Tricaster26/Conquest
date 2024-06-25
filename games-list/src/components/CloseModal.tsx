@@ -52,9 +52,7 @@ export default function CloseModal({
   }
   //useEffect allows us to capture state right after it is set
   useEffect(() => {
-    console.log(removed);
     if (removed) {
-      console.log(gamesList);
       removeData();
       setRemoved(false);
       /*setModal is called here instead of in the handleClick function, as it prevents the useEffect call from triggering if setModal
