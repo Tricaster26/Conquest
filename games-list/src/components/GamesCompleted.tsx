@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import InputField from "./InputField";
 import AllGames from "./AllGames";
 /*Holds code for input field and all games added by a user placed in gamesList*/
@@ -20,6 +20,26 @@ export default function GamesCompleted({
   gamesList,
   setList,
 }: GameFieldProps) {
+  const [emptyChecker, setChecker] = useState(true); // checks if mongoDB collection returned an empty list
+
+  // receives data from mongoDB and sets gamesList if it exists in DB
+  async function getData() {
+    const response = await fetch("/api/getData", {});
+    if (response.ok) {
+      const mongoData = await response.json();
+      if (mongoData[0] !== undefined) {
+        setList(mongoData[0].mongoList); //holds previously saved data
+        setChecker(false); // gamesList exists in DB
+      }
+    } else {
+      alert("ERROR!!");
+    }
+  }
+  //used to load data from mongoDB once on page load
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div>
       <InputField
@@ -27,6 +47,7 @@ export default function GamesCompleted({
         setInput={setInput}
         setList={setList}
         gamesList={gamesList}
+        emptyChecker={emptyChecker}
       />
       <AllGames gamesList={gamesList} setList={setList} />
     </div>

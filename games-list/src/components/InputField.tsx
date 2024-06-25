@@ -1,5 +1,5 @@
 import styles from "./InputField.module.css";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, use, useEffect, useState } from "react";
 /* Holds form allowing user to input their games and submit */
 
 interface GameFieldProps {
@@ -11,6 +11,7 @@ interface GameFieldProps {
   setList: Dispatch<
     SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
   >;
+  emptyChecker: boolean;
 }
 
 export default function InputField({
@@ -18,12 +19,46 @@ export default function InputField({
   setInput,
   gamesList,
   setList,
+  emptyChecker,
 }: GameFieldProps) {
+  const [added, setAdded] = useState(false);
+
+  //lists game on webpage and calls function to upload game to mongoDB
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setList([...gamesList, input]);
     setInput({ game: "", complete: false, details: false });
+    setAdded(true);
   }
+  //Uploads data to mongo DB when game is added
+  async function addData() {
+    var path = "replaceData";
+    if (emptyChecker) {
+      //is length is 0 then no games are saved. Create new save
+      path = "saveData";
+    }
+    console.log(path);
+    const response = await fetch("/api/" + path, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mongoList: gamesList }),
+    });
+    if (response.ok) {
+      return console.log(response);
+    } else {
+      alert("ERROR!!");
+    }
+  }
+  //used to prevent gamesList data being uploaded to DB before state is updated
+  useEffect(() => {
+    if (added) {
+      addData();
+      setAdded(false);
+    }
+  }, [added]);
+
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>

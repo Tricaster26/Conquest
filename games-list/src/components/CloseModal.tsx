@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./CloseModal.module.css";
 
 interface gameName {
@@ -24,15 +24,45 @@ export default function CloseModal({
   modal,
   setList,
 }: gameName) {
-  // function removes pop up promp as well as component clicked on
+  const [removed, setRemoved] = useState(false);
+
+  // function removes pop up prompt as well as component clicked on
   function handleClick(gameObject: {
     game: string;
     complete: boolean;
     details: boolean;
   }) {
     setList(gamesList.filter((list) => list !== gameObject));
-    setModal({ ...modal, open: false });
+    setRemoved(true);
   }
+
+  async function removeData() {
+    const response = await fetch("/api/replaceData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mongoList: gamesList }),
+    });
+    if (response.ok) {
+      return console.log(response);
+    } else {
+      alert("ERROR!!");
+    }
+  }
+  //useEffect allows us to capture state right after it is set
+  useEffect(() => {
+    console.log(removed);
+    if (removed) {
+      console.log(gamesList);
+      removeData();
+      setRemoved(false);
+      /*setModal is called here instead of in the handleClick function, as it prevents the useEffect call from triggering if setModal
+      "open:false" is set outside of the useEffect hook */
+      setModal({ ...modal, open: false });
+    }
+  }, [removed]);
+
   return (
     <div className={styles.outer}>
       <div className={styles.inner}>
@@ -52,7 +82,9 @@ export default function CloseModal({
         <div className={styles.buttons}>
           <button
             className={styles.confirm}
-            onClick={() => handleClick(modal.gameName)}
+            onClick={() => {
+              handleClick(modal.gameName);
+            }}
           >
             Confirm
           </button>
