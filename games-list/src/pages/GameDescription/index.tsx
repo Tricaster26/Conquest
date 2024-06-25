@@ -1,18 +1,17 @@
-import { Inter } from "next/font/google";
+import HeaderDesc from "@/componentsGD/Header";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useState } from "react";
 
 export default function GameDescription() {
   const searchParams = useSearchParams();
-  const gameName = searchParams.get("gameName");
+  const [gameObject, setObject] = useState(searchParams.get("gameName"));
   return (
     <main>
       <Link href="/">
-        <button>←</button>
+        <button>Home</button>
       </Link>
-      <h1>{gameName}</h1>
+      {gameObject !== null && <HeaderDesc gameName={JSON.parse(gameObject)} />}
     </main>
   );
 }

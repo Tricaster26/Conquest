@@ -111,7 +111,7 @@ export default function OneGame({
         <Link //takes us to new page which describes the game
           href={{
             pathname: "/GameDescription",
-            query: { gameName: gameObject.game },
+            query: { gameName: JSON.stringify(gameObject) },
           }}
         >
           <button className={styles.newPage}>↗</button>
