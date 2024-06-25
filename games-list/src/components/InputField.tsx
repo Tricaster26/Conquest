@@ -34,10 +34,9 @@ export default function InputField({
   async function addData() {
     var path = "replaceData";
     if (emptyChecker) {
-      //is length is 0 then no games are saved. Create new save
+      //is length is 0 then no games are placed in a new Save. Else we just replace in existing save
       path = "saveData";
     }
-    console.log(path);
     const response = await fetch("/api/" + path, {
       method: "POST",
       headers: {
