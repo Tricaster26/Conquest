@@ -3,11 +3,11 @@ import styles from "./AllGames.module.css";
 import GameDetails from "./GameDetails";
 import { useState } from "react";
 import CloseModal from "./CloseModal";
-import { listObject } from "@/pages/App";
+import { gameObject } from "@/pages/App";
 
 interface AllGamesProps {
-  gamesList: Array<listObject>;
-  setList: (gamesList: listObject[]) => void;
+  gamesList: Array<gameObject>;
+  setList: (gamesList: gameObject[]) => void;
 }
 
 /* Displays list of all games enter by the user, excluding those delated later on by the x button */
@@ -31,14 +31,14 @@ export default function AllGames({ gamesList, setList }: AllGamesProps) {
         <h3 key={x++}>
           <OneGame
             gamesList={gamesList}
-            setList={(value: listObject[]) => {
+            setList={(value: gameObject[]) => {
               setList(value);
             }}
             gameObject={gameObject}
             setOpenModal={(value: boolean) => {
               setOpenModal(value);
             }}
-            setModalDetails={(value: listObject) => setModalDetails(value)}
+            setModalDetails={(value: gameObject) => setModalDetails(value)}
           />
           <GameDetails element={gameObject} />
           {/*Modal message for user opens when close button is clicked*/}
@@ -51,7 +51,7 @@ export default function AllGames({ gamesList, setList }: AllGamesProps) {
           }}
           modalDetails={modalDetails}
           gamesList={gamesList}
-          setList={(value: listObject[]) => {
+          setList={(value: gameObject[]) => {
             setList(value);
           }}
         />

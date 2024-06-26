@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./CloseModal.module.css";
-import { listObject } from "@/pages/App";
+import { gameObject } from "@/pages/App";
 
 interface gameName {
-  gamesList: Array<listObject>;
-  setList: (gamesList: listObject[]) => void;
-  modalDetails: listObject;
+  gamesList: Array<gameObject>;
+  setList: (gamesList: gameObject[]) => void;
+  modalDetails: gameObject;
   setOpenModal: (modal: boolean) => void;
 }
 

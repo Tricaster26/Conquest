@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import InputField from "./InputField";
 import AllGames from "./AllGames";
-import { listObject } from "@/pages/App";
+import { gameObject } from "@/pages/App";
 
 /*Holds code for input field and all games added by a user placed in gamesList*/
 interface GameFieldProps {
-  input: listObject;
-  setInput: (input: listObject) => void;
-  gamesList: Array<listObject>;
-  setList: (gamesList: listObject[]) => void;
+  input: gameObject;
+  setInput: (input: gameObject) => void;
+  gamesList: Array<gameObject>;
+  setList: (gamesList: gameObject[]) => void;
 }
 
 export default function GamesCompleted({
@@ -40,10 +40,10 @@ export default function GamesCompleted({
     <div>
       <InputField
         input={input}
-        setInput={(value: listObject) => {
+        setInput={(value: gameObject) => {
           setInput(value);
         }}
-        setList={(value: listObject[]) => {
+        setList={(value: gameObject[]) => {
           setList(value);
         }}
         gamesList={gamesList}
@@ -51,7 +51,7 @@ export default function GamesCompleted({
       />
       <AllGames
         gamesList={gamesList}
-        setList={(value: listObject[]) => {
+        setList={(value: gameObject[]) => {
           setList(value);
         }}
       />

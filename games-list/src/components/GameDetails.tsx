@@ -1,8 +1,8 @@
-import { listObject } from "@/pages/App";
+import { gameObject } from "@/pages/App";
 import styles from "./GameDetails.module.css";
 
 interface GameDetailsProps {
-  element: listObject;
+  element: gameObject;
 }
 
 /*Displays game details below title if dropdown button was clicked, goes back if clicked again*/

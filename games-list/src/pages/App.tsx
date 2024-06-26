@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import GamesCompleted from "../components/GamesCompleted";
 import CountGames from "../components/CountGames";
 
-export interface listObject {
+export interface gameObject {
   game: string;
   complete: boolean;
   details: boolean;
@@ -20,18 +20,18 @@ function App() {
     score: 0,
     date: "",
   });
-  const [gamesList, setList] = useState<listObject[]>([]);
+  const [gamesList, setList] = useState<gameObject[]>([]);
 
   return (
     <div className="App">
       <Header />
       <GamesCompleted
         input={input}
-        setInput={(value: listObject) => {
+        setInput={(value: gameObject) => {
           setInput(value);
         }}
         gamesList={gamesList}
-        setList={(value: listObject[]) => {
+        setList={(value: gameObject[]) => {
           setList(value);
         }}
       />

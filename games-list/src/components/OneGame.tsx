@@ -1,15 +1,15 @@
 import Link from "next/link";
 import styles from "./OneGame.module.css";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { listObject } from "@/pages/App";
+import { gameObject } from "@/pages/App";
 /*Display for each game title , excluding the details*/
 
 interface OneGameProps {
-  gameObject: listObject;
-  gamesList: Array<listObject>;
-  setList: (gamesList: listObject[]) => void;
+  gameObject: gameObject;
+  gamesList: Array<gameObject>;
+  setList: (gamesList: gameObject[]) => void;
   setOpenModal: (modal: boolean) => void;
-  setModalDetails: (gameObject: listObject) => void;
+  setModalDetails: (gameObject: gameObject) => void;
 }
 
 /* This component signifies details related to any one game added and its components and modal */
@@ -26,12 +26,12 @@ export default function OneGame({
   let gamePic =
     "https://media.rawg.io/media/games/1c3/1c305096502c475c00276c827f0fd697.jpg";
 
-  function closeObject(gameObject: listObject) {
+  function closeObject(gameObject: gameObject) {
     //removes element from list of games when 'x' button is clicked
     setOpenModal(true);
     setModalDetails(gameObject);
   }
-  function completeCheck(element: listObject) {
+  function completeCheck(element: gameObject) {
     //changes complete status of element object to true when component is clicked
     setList(
       gamesList.map((game) =>
@@ -40,7 +40,7 @@ export default function OneGame({
     );
     setClicked(true);
   }
-  function revealDetails(gameObject: listObject) {
+  function revealDetails(gameObject: gameObject) {
     //changes details status of element to false when v button is clicked
     setList(
       gamesList.map((game) =>

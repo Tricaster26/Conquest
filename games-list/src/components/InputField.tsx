@@ -1,13 +1,13 @@
-import { listObject } from "@/pages/App";
+import { gameObject } from "@/pages/App";
 import styles from "./InputField.module.css";
 import { Dispatch, SetStateAction, use, useEffect, useState } from "react";
 /* Holds form allowing user to input their games and submit */
 
 interface GameFieldProps {
-  input: listObject;
-  setInput: (input: listObject) => void;
-  gamesList: Array<listObject>;
-  setList: (gamesList: listObject[]) => void;
+  input: gameObject;
+  setInput: (input: gameObject) => void;
+  gamesList: Array<gameObject>;
+  setList: (gamesList: gameObject[]) => void;
   emptyChecker: boolean;
 }
 
