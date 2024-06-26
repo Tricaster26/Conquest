@@ -32,7 +32,7 @@ export default function CloseModal({
       body: JSON.stringify({ mongoList: gamesList }),
     });
     if (!response.ok) {
-      console.error("Error");
+      console.error("Error in saving list data to mongoDB");
     }
   }
   //useEffect is placed here as it allows the list state to be saved when confirm is clicked and before modal is closed
