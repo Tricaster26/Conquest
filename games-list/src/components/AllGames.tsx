@@ -1,7 +1,8 @@
 import OneGame from "./OneGame";
 import styles from "./AllGames.module.css";
 import GameDetails from "./GameDetails";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import CloseModal from "./CloseModal";
 
 interface AllGamesProps {
   gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
@@ -17,22 +18,36 @@ export default function AllGames({ gamesList, setList }: AllGamesProps) {
   const sortedList = gamesList
     .slice()
     .sort((a, b) => Number(a.complete) - Number(b.complete));
+  const [modal, setModal] = useState({
+    gameName: { game: "", complete: false, details: false },
+    open: false,
+  }); //Determines if modal prompt appears
 
   return (
     <div className={styles.container}>
       {sortedList.map(
         (
-          element //Every game element exists within sortedList
+          gameObject //Every game element which exists within sortedList
         ) => (
           <h3 key={x++}>
             <OneGame
               gamesList={gamesList}
               setList={setList}
-              element={element}
+              gameObject={gameObject}
+              setModal={setModal}
             />
-            <GameDetails gamesList={gamesList} element={element} />
+            <GameDetails gamesList={gamesList} element={gameObject} />
+            {/*Modal message for user opens whenc close button is clicked*/}
           </h3>
         )
+      )}
+      {modal.open && (
+        <CloseModal
+          setModal={setModal}
+          modal={modal}
+          gamesList={gamesList}
+          setList={setList}
+        />
       )}
     </div>
   );

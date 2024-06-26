@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import GamesCompleted from "../components/GamesCompleted";
 import CountGames from "../components/CountGames";
@@ -17,10 +17,10 @@ function App() {
     details: false,
   });
   const [gamesList, setList] = useState<listObject[]>([]);
+
   return (
     <div className="App">
       <Header />
-
       <GamesCompleted
         input={input}
         setInput={setInput}

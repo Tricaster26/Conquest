@@ -13,7 +13,7 @@
   transition: color 1000ms linear;
   cursor: pointer;
   top: 20%;
-  color: #c98b0f;
+  color: #ffff;
 }
 .unstriked.unstriked-active {
   width: 30%;
@@ -26,14 +26,14 @@
   width: 25px;
   top: 18%;
   height: 25px;
-  background-color: #c98b0f;
+  background-color: #ffff;
   transition: background-color 500ms linear, border 100ms linear;
   cursor: pointer;
   border-radius: 5px;
 }
 .delete:hover {
-  background-color: #dda22c;
-  border: 1px solid rgb(172, 194, 5);
+  background-color: #ffff;
+  border: 1px solid #ffff;
 }
 .reveal {
   position: absolute;
@@ -42,21 +42,40 @@
   width: 25px;
   top: 18%;
   height: 25px;
-  background-color: #c98b0f;
+  background-color: #ffff;
   transition: background-color 500ms linear;
   transition: border 100ms linear;
   cursor: pointer;
   border-radius: 5px;
 }
 .reveal:hover {
-  background-color: #dda22c;
-  border: 1px solid rgb(172, 194, 5);
+  background-color: #ffff;
+  border: 1px solid #ffff;
+}
+
+.newPage {
+  position: absolute;
+  bottom: 1.5px;
+  left: 84%;
+  width: 25px;
+  top: 18%;
+  height: 25px;
+  background-color: #ffff;
+  transition: background-color 500ms linear;
+  transition: border 100ms linear;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.newPage:hover {
+  background-color: #ffff;
+  border: 1px solid #ffff;
 }
 
 .box {
   position: relative;
   left: 25%;
-  border: 2px solid rgb(172, 194, 5);
+  border: 2px solid #ffff;
   width: 50%;
   height: 40px;
   text-align: center;
@@ -71,7 +90,8 @@
   height: 40px;
   text-align: center;
   border-radius: 10px;
-  background-color: black;
+  background-color: #4a4a4a;
+  box-shadow: 0px 4px 6px rgb(255, 255, 255);
   transition: background-color 0.5s ease-in;
 }
 .innerBox:hover {
