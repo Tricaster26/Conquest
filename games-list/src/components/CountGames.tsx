@@ -1,7 +1,8 @@
+import { gameObject } from "@/pages/App";
 import styles from "./CountGames.module.css";
 
 interface GameFieldProps {
-  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
+  gamesList: Array<gameObject>;
 }
 
 /*Used to count games completed and uncompleted*/
