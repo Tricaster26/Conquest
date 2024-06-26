@@ -1,12 +1,17 @@
 import styles from "./GameDetails.module.css";
 
 interface GameDetailsProps {
-  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
-  element: { game: string; complete: boolean; details: boolean };
+  element: {
+    game: string;
+    complete: boolean;
+    details: boolean;
+    score: number;
+    date: string;
+  };
 }
 
 /*Displays game details below title if dropdown button was clicked, goes back if clicked again*/
-export default function GameDetails({ gamesList, element }: GameDetailsProps) {
+export default function GameDetails({ element }: GameDetailsProps) {
   return element.details ? (
     <div
       className={styles.details}
@@ -15,8 +20,10 @@ export default function GameDetails({ gamesList, element }: GameDetailsProps) {
       }}
     >
       <div className={styles.transition}>
-        <span className={styles.meta}>MetaCritic Score: </span>
-        <span className={styles.date}>Release Date:</span>
+        <span className={styles.meta}>
+          MetaCritic : <span className={styles.score}>{element.score}</span>{" "}
+        </span>
+        <span className={styles.date}>Release Date: {element.date}</span>
       </div>
     </div>
   ) : (

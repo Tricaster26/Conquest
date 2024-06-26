@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "../components/Header";
 import GamesCompleted from "../components/GamesCompleted";
 import CountGames from "../components/CountGames";
 
-interface listObject {
+export interface listObject {
   game: string;
   complete: boolean;
   details: boolean;
+  score: number;
+  date: string;
   // Add more properties as needed
 }
 
@@ -15,6 +17,8 @@ function App() {
     game: "",
     complete: false,
     details: false,
+    score: 0,
+    date: "",
   });
   const [gamesList, setList] = useState<listObject[]>([]);
 
@@ -23,9 +27,13 @@ function App() {
       <Header />
       <GamesCompleted
         input={input}
-        setInput={setInput}
+        setInput={(value: listObject) => {
+          setInput(value);
+        }}
         gamesList={gamesList}
-        setList={setList}
+        setList={(value: listObject[]) => {
+          setList(value);
+        }}
       />
       <CountGames gamesList={gamesList} />
       {/*<SideBar />*/}

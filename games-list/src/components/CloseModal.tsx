@@ -1,38 +1,25 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./CloseModal.module.css";
+import { listObject } from "@/pages/App";
 
 interface gameName {
-  modal: {
-    gameName: { game: string; complete: boolean; details: boolean };
-    open: boolean;
-  };
-  setModal: Dispatch<
-    SetStateAction<{
-      gameName: { game: string; complete: boolean; details: boolean };
-      open: boolean;
-    }>
-  >;
-  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
-  setList: Dispatch<
-    SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
-  >;
+  gamesList: Array<listObject>;
+  setList: (gamesList: listObject[]) => void;
+  modalDetails: listObject;
+  setOpenModal: (modal: boolean) => void;
 }
 
 export default function CloseModal({
   gamesList,
-  setModal,
-  modal,
+  modalDetails,
+  setOpenModal,
   setList,
 }: gameName) {
   const [removed, setRemoved] = useState(false);
 
   // function removes pop up prompt as well as component clicked on
-  function handleClick(gameObject: {
-    game: string;
-    complete: boolean;
-    details: boolean;
-  }) {
-    setList(gamesList.filter((list) => list !== gameObject));
+  function handleRemoval(game: string) {
+    setList(gamesList.filter((element) => element.game !== game));
     setRemoved(true);
   }
 
@@ -44,20 +31,18 @@ export default function CloseModal({
       },
       body: JSON.stringify({ mongoList: gamesList }),
     });
-    if (response.ok) {
-      return console.log(response);
-    } else {
-      alert("ERROR!!");
+    if (!response.ok) {
+      console.error("Error");
     }
   }
-  //useEffect allows us to capture state right after it is set
+  //useEffect is placed here as it allows the list state to be saved when confirm is clicked and before modal is closed
   useEffect(() => {
     if (removed) {
       removeData();
       setRemoved(false);
       /*setModal is called here instead of in the handleClick function, as it prevents the useEffect call from triggering if setModal
       "open:false" is set outside of the useEffect hook */
-      setModal({ ...modal, open: false });
+      setOpenModal(false);
     }
   }, [removed]);
 
@@ -66,14 +51,13 @@ export default function CloseModal({
       <div className={styles.inner}>
         <div className={styles.title}>
           <h1>
-            Are you sure you want to remove "{modal.gameName.game}" from
-            Conquest?
+            Are you sure you want to remove "{modalDetails.game}" from Conquest?
           </h1>
         </div>
         <div className={styles.message}>
           <p>
-            By clicking confirm you will be removing "{modal.gameName.game}"
-            from conquest.
+            By clicking confirm you will be removing "{modalDetails.game}" from
+            conquest.
             <br /> Click cancel to go back.
           </p>
         </div>
@@ -81,16 +65,12 @@ export default function CloseModal({
           <button
             className={styles.confirm}
             onClick={() => {
-              handleClick(modal.gameName);
+              handleRemoval(modalDetails.game);
             }}
           >
             Confirm
           </button>
-          <button
-            className={styles.cancel}
-            // close modal if "Cancel" is selected
-            onClick={() => setModal({ ...modal, open: false })}
-          >
+          <button className={styles.cancel} onClick={() => setOpenModal(false)}>
             Cancel
           </button>
         </div>

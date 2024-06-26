@@ -1,17 +1,14 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import InputField from "./InputField";
 import AllGames from "./AllGames";
-/*Holds code for input field and all games added by a user placed in gamesList*/
+import { listObject } from "@/pages/App";
 
+/*Holds code for input field and all games added by a user placed in gamesList*/
 interface GameFieldProps {
-  input: { game: string; complete: boolean; details: boolean };
-  setInput: Dispatch<
-    SetStateAction<{ game: string; complete: boolean; details: boolean }>
-  >;
-  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
-  setList: Dispatch<
-    SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
-  >;
+  input: listObject;
+  setInput: (input: listObject) => void;
+  gamesList: Array<listObject>;
+  setList: (gamesList: listObject[]) => void;
 }
 
 export default function GamesCompleted({
@@ -32,10 +29,9 @@ export default function GamesCompleted({
         setChecker(false); // gamesList exists in DB
       }
     } else {
-      alert("ERROR!!");
+      alert("Error in receiving list of saved game data");
     }
   }
-  //used to load data from mongoDB once on page load
   useEffect(() => {
     getData();
   }, []);
@@ -44,12 +40,21 @@ export default function GamesCompleted({
     <div>
       <InputField
         input={input}
-        setInput={setInput}
-        setList={setList}
+        setInput={(value: listObject) => {
+          setInput(value);
+        }}
+        setList={(value: listObject[]) => {
+          setList(value);
+        }}
         gamesList={gamesList}
         emptyChecker={emptyChecker}
       />
-      <AllGames gamesList={gamesList} setList={setList} />
+      <AllGames
+        gamesList={gamesList}
+        setList={(value: listObject[]) => {
+          setList(value);
+        }}
+      />
     </div>
   );
 }

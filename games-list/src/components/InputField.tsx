@@ -1,16 +1,13 @@
+import { listObject } from "@/pages/App";
 import styles from "./InputField.module.css";
 import { Dispatch, SetStateAction, use, useEffect, useState } from "react";
 /* Holds form allowing user to input their games and submit */
 
 interface GameFieldProps {
-  input: { game: string; complete: boolean; details: boolean };
-  setInput: Dispatch<
-    SetStateAction<{ game: string; complete: boolean; details: boolean }>
-  >;
-  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
-  setList: Dispatch<
-    SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
-  >;
+  input: listObject;
+  setInput: (input: listObject) => void;
+  gamesList: Array<listObject>;
+  setList: (gamesList: listObject[]) => void;
   emptyChecker: boolean;
 }
 
@@ -24,10 +21,14 @@ export default function InputField({
   const [added, setAdded] = useState(false);
 
   //lists game on webpage and calls function to upload game to mongoDB
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setList([...gamesList, input]);
-    setInput({ game: "", complete: false, details: false });
+
+    var rawgData = await fetchData(input.game);
+    setList([
+      ...gamesList,
+      { ...input, score: rawgData.metacritic, date: rawgData.released },
+    ]);
     setAdded(true);
   }
   //Uploads data to mongo DB when game is added
@@ -44,12 +45,23 @@ export default function InputField({
       },
       body: JSON.stringify({ mongoList: gamesList }),
     });
-    if (response.ok) {
-      return console.log(response);
-    } else {
-      alert("ERROR!!");
+    if (!response.ok) {
+      console.error("Error in uploading data");
     }
   }
+  //fethches list of possible games from RAWG of queried submitted game
+  async function fetchData(game: string) {
+    const response = await fetch(
+      "https://api.rawg.io/api/games?search=" +
+        game +
+        "&key=" +
+        process.env.NEXT_PUBLIC_RAWG_KEY
+    );
+    if (response.ok) {
+      return await response.json().then((search) => search.results[0]);
+    }
+  }
+
   //used to prevent gamesList data being uploaded to DB before state is updated
   useEffect(() => {
     if (added) {
@@ -65,7 +77,12 @@ export default function InputField({
           type="text"
           value={input.game}
           onChange={(e) =>
-            setInput({ game: e.target.value, complete: false, details: false })
+            setInput({
+              ...input,
+              game: e.target.value,
+              complete: false,
+              details: false,
+            })
           }
           placeholder="Conquer a game ..."
           className={styles.input}

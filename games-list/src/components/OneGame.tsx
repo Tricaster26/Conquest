@@ -1,33 +1,24 @@
 import Link from "next/link";
 import styles from "./OneGame.module.css";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { listObject } from "@/pages/App";
 /*Display for each game title , excluding the details*/
 
 interface OneGameProps {
-  gameObject: { game: string; complete: boolean; details: boolean };
-  gamesList: Array<{ game: string; complete: boolean; details: boolean }>;
-  setList: Dispatch<
-    SetStateAction<{ game: string; complete: boolean; details: boolean }[]>
-  >;
-  setModal: Dispatch<
-    SetStateAction<{
-      gameName: { game: string; complete: boolean; details: boolean };
-      open: boolean;
-    }>
-  >;
+  gameObject: listObject;
+  gamesList: Array<listObject>;
+  setList: (gamesList: listObject[]) => void;
+  setOpenModal: (modal: boolean) => void;
+  setModalDetails: (gameObject: listObject) => void;
 }
 
-interface oneGameElement {
-  game: string;
-  complete: boolean;
-  details: boolean;
-}
 /* This component signifies details related to any one game added and its components and modal */
 export default function OneGame({
   gameObject,
   gamesList,
   setList,
-  setModal,
+  setOpenModal,
+  setModalDetails,
 }: OneGameProps) {
   const [clicked, setClicked] = useState(false); //checks if game component is clicked
   let getName = (complete: boolean) =>
@@ -35,11 +26,12 @@ export default function OneGame({
   let gamePic =
     "https://media.rawg.io/media/games/1c3/1c305096502c475c00276c827f0fd697.jpg";
 
-  function closeObject(gameObject: oneGameElement) {
+  function closeObject(gameObject: listObject) {
     //removes element from list of games when 'x' button is clicked
-    setModal({ gameName: gameObject, open: true });
+    setOpenModal(true);
+    setModalDetails(gameObject);
   }
-  function completeCheck(element: oneGameElement) {
+  function completeCheck(element: listObject) {
     //changes complete status of element object to true when component is clicked
     setList(
       gamesList.map((game) =>
@@ -48,7 +40,7 @@ export default function OneGame({
     );
     setClicked(true);
   }
-  function revealDetails(gameObject: oneGameElement) {
+  function revealDetails(gameObject: listObject) {
     //changes details status of element to false when v button is clicked
     setList(
       gamesList.map((game) =>
@@ -66,10 +58,8 @@ export default function OneGame({
       },
       body: JSON.stringify({ mongoList: gamesList }),
     });
-    if (response.ok) {
-      return console.log(response);
-    } else {
-      alert("ERROR!!");
+    if (!response.ok) {
+      console.error("Error when uploading striked out data");
     }
   }
   //used to prevent gamesList data being uploaded to DB before state is updated
@@ -108,10 +98,13 @@ export default function OneGame({
         >
           x
         </button>
-        <Link //takes us to new page which describes the game
+        <Link //passing gameObject as query makes URL look really bad. Maybe just fetch data from mongoDB again?
           href={{
-            pathname: "/GameDescription",
-            query: { gameName: JSON.stringify(gameObject) },
+            pathname: "/[slug]",
+            query: {
+              gameName: JSON.stringify(gameObject),
+              slug: gameObject.game,
+            },
           }}
         >
           <button className={styles.newPage}>↗</button>
