@@ -7,6 +7,14 @@ interface GameDetailsProps {
 
 /*Displays game details below title if dropdown button was clicked, goes back if clicked again*/
 export default function GameDetails({ element }: GameDetailsProps) {
+  var style = styles.goodScore;
+  if (element.score < 80) {
+    style = styles.avgScore;
+    if (element.score < 50) {
+      style = styles.problemScore;
+    }
+  }
+
   return element.details ? (
     <div
       className={styles.details}
@@ -16,7 +24,7 @@ export default function GameDetails({ element }: GameDetailsProps) {
     >
       <div className={styles.transition}>
         <span className={styles.meta}>
-          MetaCritic : <span className={styles.score}>{element.score}</span>{" "}
+          MetaCritic : <span className={style}>{element.score}</span>{" "}
         </span>
         <span className={styles.date}>Release Date: {element.date}</span>
       </div>

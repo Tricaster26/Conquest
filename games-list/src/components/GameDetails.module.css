@@ -42,11 +42,24 @@
   font-weight: lighter;
 }
 
-.score {
+.goodScore {
   position: relative;
   color: rgb(109, 195, 109);
   text-shadow: 2px 2px 5px #17c052;
 }
+
+.avgScore {
+  position: relative;
+  color: rgb(195, 183, 46);
+  text-shadow: 2px 2px 5px #c4d734;
+}
+
+.problemScore {
+  position: relative;
+  color: rgb(208, 28, 28);
+  text-shadow: 2px 2px 5px rgb(228, 63, 63);
+}
+
 .critic {
   font-weight: 100;
 }
