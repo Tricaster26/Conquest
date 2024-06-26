@@ -1,8 +1,12 @@
 import { listObject } from "@/pages/App";
 import styles from "./GameDetails.module.css";
 
+interface GameDetailsProps {
+  element: listObject;
+}
+
 /*Displays game details below title if dropdown button was clicked, goes back if clicked again*/
-export default function GameDetails(element: listObject) {
+export default function GameDetails({ element }: GameDetailsProps) {
   return element.details ? (
     <div
       className={styles.details}
